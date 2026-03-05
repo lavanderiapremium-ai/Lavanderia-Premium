@@ -1,91 +1,82 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Lavandería Premium</title>
-
-<style>
+<!DOCTYPE html><html lang="es">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lavandería Premium</title><style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#f4f4f4;
+background:url("https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c");
+background-size:cover;
+background-attachment:fixed;
+color:white;
 }
 
-/* FONDO HERO */
+/* CAPA OSCURA */
 
-.hero{
-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url("https://images.unsplash.com/photo-1626806787461-102c1bfaaea1");
-background-size:cover;
-background-position:center;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-color:white;
-text-align:center;
+.overlay{
+background:rgba(0,0,0,0.7);
+min-height:100vh;
 }
 
 /* MENU */
 
-.menu{
-position:fixed;
-top:0;
-width:100%;
-background:black;
-padding:15px;
+nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-color:white;
-z-index:10;
+padding:20px;
+background:black;
 }
 
-.menu input{
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#ff3b3b;
+}
+
+.search{
 padding:8px;
 border-radius:20px;
 border:none;
 }
 
-/* TITULO */
+/* SLIDER */
 
-.hero h1{
-font-size:50px;
-margin-bottom:10px;
-letter-spacing:2px;
+.slider{
+width:100%;
+height:300px;
+position:relative;
+overflow:hidden;
 }
 
-.hero p{
-font-size:20px;
+.slide{
+width:100%;
+height:300px;
+object-fit:cover;
+position:absolute;
+opacity:0;
+transition:opacity 1s;
 }
 
 /* SERVICIOS */
 
 .servicios{
-padding:60px 20px;
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:25px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:40px;
 }
 
 .card{
-background:white;
-width:280px;
+background:#1c1c1c;
 border-radius:15px;
 overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:scale(1.05);
 }
 
 .card img{
@@ -95,51 +86,47 @@ object-fit:cover;
 }
 
 .card h3{
+text-align:center;
 padding:10px;
 }
 
-.card p{
-padding:0 10px;
-color:#555;
-}
-
-.boton{
-display:block;
-margin:15px;
-padding:12px;
-background:#e11d48;
-color:white;
-text-align:center;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-}
-
-/* DIRECCION */
-
-.direccion{
-background:#111;
-color:white;
-padding:50px;
-text-align:center;
-}
-
-.direccion input{
-padding:12px;
-width:250px;
-border-radius:10px;
-border:none;
-margin-top:10px;
-}
-
-.direccion button{
-padding:12px 20px;
-background:#e11d48;
+.btn{
+background:#e63946;
 color:white;
 border:none;
-border-radius:10px;
-margin-top:10px;
+padding:12px;
+width:100%;
 cursor:pointer;
+font-size:16px;
+}
+
+/* FORMULARIO */
+
+.formulario{
+background:#1c1c1c;
+margin:40px;
+padding:30px;
+border-radius:15px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+border:none;
+}
+
+/* CARRITO */
+
+.carrito{
+position:fixed;
+top:90px;
+right:20px;
+background:#1c1c1c;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.5);
 }
 
 /* WHATSAPP */
@@ -149,175 +136,121 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-color:white;
 padding:15px 20px;
-border-radius:30px;
+border-radius:50px;
+color:white;
 text-decoration:none;
 font-weight:bold;
-box-shadow:0 10px 20px rgba(0,0,0,0.3);
+animation:flotar 2s infinite;
 }
 
-footer{
-background:black;
-color:white;
-text-align:center;
-padding:20px;
+@keyframes flotar{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
 }
 
-</style>
+/* BURBUJAS */
 
-</head>
+.bubble{
+position:fixed;
+bottom:-100px;
+background:rgba(255,255,255,0.2);
+border-radius:50%;
+animation:subir 10s infinite;
+}
 
-<body>
+@keyframes subir{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+}
 
-<!-- MENU -->
+</style></head><body><div class="overlay"><nav><div class="logo">Lavandería Premium</div><input class="search" placeholder="Buscar servicio"></nav><div class="slider"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" class="slide">
+<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1" class="slide">
+<img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30" class="slide"></div><section class="servicios"><div class="card"><img src="https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c"><h3>Lavado de Ropa</h3><button class="btn" onclick="agregar('Lavado de Ropa')">Agregar</button>
 
-<div class="menu">
+</div><div class="card"><img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30"><h3>Lavado de Alfombras</h3><button class="btn" onclick="agregar('Lavado de Alfombras')">Agregar</button>
 
-<div>Lavandería Premium</div>
+</div><div class="card"><img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6"><h3>Limpieza de Zapatos</h3><button class="btn" onclick="agregar('Limpieza de Zapatos')">Agregar</button>
 
-<input type="text" placeholder="Buscar servicio">
+</div></section><div class="formulario"><h2>Solicitar Recolección</h2><input id="nombre" placeholder="Nombre"><input id="direccion" placeholder="Dirección"><textarea id="mensaje" placeholder="Servicio que necesitas"></textarea><button class="btn" onclick="enviar()">Enviar Pedido</button>
 
-</div>
+</div><div class="carrito"><h3>Pedidos</h3><ul id="lista"></ul></div><a class="whatsapp" href="https://wa.me/525587741101">WhatsApp</a>
 
+</div><script>
 
-<!-- HERO -->
+/* SLIDER */
 
-<section class="hero">
+let slides=document.querySelectorAll(".slide")
+let index=0
 
-<h1>Lavandería Premium</h1>
+function cambiarFoto(){
 
-<p>Lavado • Secado • Entrega a domicilio</p>
+slides.forEach((img)=>{img.style.opacity=0})
 
-</section>
+slides[index].style.opacity=1
 
+index++
 
-<!-- SERVICIOS -->
+if(index>=slides.length){index=0}
 
-<section class="servicios">
+}
 
-<div class="card">
+setInterval(cambiarFoto,3000)
 
-<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+cambiarFoto()
 
-<h3>Lavado</h3>
+/* CARRITO */
 
-<p>Lavamos tu ropa con detergentes premium.</p>
+let pedidos=[]
 
-<a class="boton" href="https://wa.me/525587741101?text=Hola quiero servicio de lavado">
+function agregar(servicio){
 
-Pedir Lavado
+pedidos.push(servicio)
 
-</a>
+let lista=document.getElementById("lista")
 
-</div>
+let item=document.createElement("li")
 
+item.textContent=servicio
 
-<div class="card">
+lista.appendChild(item)
 
-<img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10">
+}
 
-<h3>Secado</h3>
+/* ENVIAR A WHATSAPP */
 
-<p>Secado profesional para todo tipo de ropa.</p>
+function enviar(){
 
-<a class="boton" href="https://wa.me/525587741101?text=Hola quiero servicio de secado">
+let nombre=document.getElementById("nombre").value
+let direccion=document.getElementById("direccion").value
+let mensaje=document.getElementById("mensaje").value
 
-Pedir Secado
+let texto="Pedido Lavandería Premium%0A"
+texto+="Nombre: "+nombre+"%0A"
+texto+="Dirección: "+direccion+"%0A"
+texto+="Servicios: "+pedidos.join(", ")+"%0A"
+texto+="Mensaje: "+mensaje
 
-</a>
+window.open("https://wa.me/525587741101?text="+texto)
 
-</div>
+}
 
+/* BURBUJAS */
 
-<div class="card">
+for(let i=0;i<15;i++){
 
-<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+let bubble=document.createElement("div")
 
-<h3>Ropa Elegante</h3>
+bubble.className="bubble"
 
-<p>Tratamiento especial para ropa delicada.</p>
+bubble.style.width=Math.random()*40+"px"
+bubble.style.height=bubble.style.width
+bubble.style.left=Math.random()*100+"%"
+bubble.style.animationDuration=(5+Math.random()*10)+"s"
 
-<a class="boton" href="https://wa.me/525587741101?text=Hola quiero lavar ropa elegante">
+document.body.appendChild(bubble)
 
-Pedir Servicio
+}
 
-</a>
-
-</div>
-
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-
-<h3>Zapatos</h3>
-
-<p>Limpieza profesional de zapatos.</p>
-
-<a class="boton" href="https://wa.me/525587741101?text=Hola quiero lavar zapatos">
-
-Lavar Zapatos
-
-</a>
-
-</div>
-
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
-
-<h3>Entrega</h3>
-
-<p>Recogemos y entregamos tu ropa en casa.</p>
-
-<a class="boton" href="https://wa.me/525587741101?text=Hola quiero entrega a domicilio">
-
-Solicitar
-
-</a>
-
-</div>
-
-</section>
-
-
-<!-- DIRECCION -->
-
-<section class="direccion">
-
-<h2>Pedir servicio a domicilio</h2>
-
-<p>Escribe tu dirección</p>
-
-<input type="text" placeholder="Tu dirección">
-
-<br>
-
-<button onclick="window.location.href='https://wa.me/525587741101?text=Hola quiero pedir recolección de ropa'">
-
-Enviar dirección
-
-</button>
-
-</section>
-
-
-<footer>
-
-Lavandería Premium © 2026
-
-</footer>
-
-
-<a class="whatsapp"
-href="https://wa.me/525587741101?text=Hola quiero información">
-
-WhatsApp
-
-</a>
-
-
-</body>
-</html
+</script></body></html>
