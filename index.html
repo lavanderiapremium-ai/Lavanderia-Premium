@@ -17,53 +17,66 @@ background:black;
 color:white;
 }
 
-/* PORTADA */
+/* HERO */
 
 .hero{
-height:70vh;
+height:80vh;
 background:url("https://images.unsplash.com/photo-1517673132405-a56a62b18caf");
 background-size:cover;
 background-position:center;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
 }
 
 .hero h1{
 font-size:50px;
-margin:0;
+letter-spacing:3px;
 }
 
 .hero p{
-font-size:20px;
-opacity:0.8;
+font-size:22px;
+color:#ff4d4d;
 }
 
-/* LEMA */
+/* MENU */
 
-.lema{
-text-align:center;
-padding:30px;
-font-size:22px;
+.menu{
 background:#111;
+display:flex;
+justify-content:center;
+gap:20px;
+padding:15px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+background:#b30000;
+padding:10px 20px;
+border-radius:10px;
+font-weight:bold;
+}
+
+.menu a:hover{
+background:red;
 }
 
 /* SERVICIOS */
 
 .servicios{
+padding:40px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:40px;
+gap:25px;
 }
 
 .card{
 background:#111;
 border-radius:15px;
 overflow:hidden;
-box-shadow:0 0 20px rgba(0,0,0,0.6);
+box-shadow:0 10px 30px rgba(0,0,0,0.7);
 transition:0.3s;
 }
 
@@ -78,23 +91,37 @@ object-fit:cover;
 }
 
 .card h3{
-margin:15px;
+text-align:center;
 }
 
 .card p{
-margin:15px;
-opacity:0.8;
+padding:10px;
+text-align:center;
 }
 
 .btn{
 display:block;
-margin:15px;
-padding:10px;
-background:#00c853;
+margin:15px auto;
+padding:10px 25px;
+background:red;
 color:white;
-text-align:center;
-border-radius:8px;
-text-decoration:none;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* GALERIA */
+
+.slider{
+width:100%;
+height:350px;
+overflow:hidden;
+}
+
+.slider img{
+width:100%;
+height:350px;
+object-fit:cover;
 }
 
 /* MAPA */
@@ -106,7 +133,7 @@ text-align:center;
 
 iframe{
 width:90%;
-height:350px;
+height:300px;
 border:none;
 border-radius:10px;
 }
@@ -119,25 +146,17 @@ bottom:20px;
 right:20px;
 background:#25D366;
 color:white;
-padding:15px;
-border-radius:50px;
+padding:18px;
+border-radius:50%;
+font-size:24px;
 text-decoration:none;
-font-size:18px;
-box-shadow:0 0 10px black;
+box-shadow:0 5px 20px black;
 }
 
-/* CARRUSEL */
-
-.carrusel{
-width:100%;
-height:300px;
-overflow:hidden;
-}
-
-.carrusel img{
-width:100%;
-height:300px;
-object-fit:cover;
+footer{
+background:#111;
+text-align:center;
+padding:20px;
 }
 
 </style>
@@ -146,35 +165,41 @@ object-fit:cover;
 
 <body>
 
-<!-- PORTADA -->
+<!-- HERO -->
 
 <div class="hero">
 
+<div>
+
 <h1>Lavandería Premium</h1>
 
-<p>Servicio profesional de lavado</p>
+<p>"Elegancia y limpieza en cada prenda"</p>
 
 </div>
 
-<!-- LEMA -->
+</div>
 
-<div class="lema">
+<!-- MENU -->
 
-✨ "Tu ropa impecable, tu tiempo libre." ✨
+<div class="menu">
+
+<a href="#">Inicio</a>
+<a href="#servicios">Servicios</a>
+<a href="#mapa">Ubicación</a>
 
 </div>
 
 <!-- CARRUSEL -->
 
-<div class="carrusel">
+<div class="slider">
 
-<img id="slider" src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf">
+<img id="slide" src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf">
 
 </div>
 
 <!-- SERVICIOS -->
 
-<div class="servicios">
+<section id="servicios" class="servicios">
 
 <div class="card">
 
@@ -184,7 +209,7 @@ object-fit:cover;
 
 <p>Lavado profesional con productos premium.</p>
 
-<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
+<button class="btn" onclick="pedir('Lavado')">Solicitar</button>
 
 </div>
 
@@ -196,7 +221,7 @@ object-fit:cover;
 
 <p>Secado rápido con tecnología moderna.</p>
 
-<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
+<button class="btn" onclick="pedir('Secado')">Solicitar</button>
 
 </div>
 
@@ -206,9 +231,9 @@ object-fit:cover;
 
 <h3>Lavado Express</h3>
 
-<p>Entrega el mismo día.</p>
+<p>Entrega rápida el mismo día.</p>
 
-<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
+<button class="btn" onclick="pedir('Lavado Express')">Solicitar</button>
 
 </div>
 
@@ -216,75 +241,105 @@ object-fit:cover;
 
 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
 
-<h3>Lavado de Alfombras</h3>
+<h3>Alfombras</h3>
 
-<p>Limpieza profunda para alfombras.</p>
+<p>Limpieza profunda de alfombras.</p>
 
-<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
+<button class="btn" onclick="pedir('Alfombras')">Solicitar</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+
+<h3>Limpieza de Zapatos</h3>
+
+<p>Cuidado especial para calzado.</p>
+
+<button class="btn" onclick="pedir('Zapatos')">Solicitar</button>
 
 </div>
 
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8">
+
+<h3>Ropa delicada</h3>
+
+<p>Tratamiento especial para prendas delicadas.</p>
+
+<button class="btn" onclick="pedir('Ropa delicada')">Solicitar</button>
+
 </div>
+
+</section>
 
 <!-- MAPA -->
 
-<div class="mapa">
+<div id="mapa" class="mapa">
 
 <h2>📍 Recolección a domicilio</h2>
 
-<p>
-Estamos en Carr. Picacho-Ajusco 128, Paraje 38, Tlalpan
-</p>
+<p>Carr. Picacho-Ajusco 128, Paraje 38, Tlalpan</p>
 
-<iframe
-src="https://www.google.com/maps?q=19.2672081,-99.2084152&z=18&output=embed">
-</iframe>
+<iframe src="https://www.google.com/maps?q=19.2672081,-99.2084152&z=18&output=embed"></iframe>
 
 </div>
 
-<!-- WHATSAPP -->
+<footer>
 
-<a class="whatsapp" href="https://wa.me/525587741101">
+Lavandería Premium © 2026
 
-WhatsApp
+</footer>
 
+<a class="whatsapp"
+href="https://wa.me/525587741101?text=Hola%20quiero%20información%20de%20lavandería"
+target="_blank">
+💬
 </a>
 
-<!-- SCRIPT CARRUSEL -->
-
 <script>
+
+/* PEDIDO */
+
+function pedir(servicio){
+
+let direccion = prompt("Escribe tu dirección para recoger la ropa:");
+
+let mensaje="Hola quiero pedir "+servicio+" mi dirección es: "+direccion;
+
+window.open("https://wa.me/525587741101?text="+encodeURIComponent(mensaje));
+
+}
+
+/* SLIDER */
 
 let imagenes=[
 
 "https://images.unsplash.com/photo-1517673132405-a56a62b18caf",
-
 "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1",
-
 "https://images.unsplash.com/photo-1582735689369-4fe89db7114c",
-
 "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
-
 "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
 
-]
+];
 
-let i=0
+let i=0;
 
-function cambiarImagen(){
+function cambiar(){
 
-i++
+i++;
 
 if(i>=imagenes.length){
+i=0;
+}
 
-i=0
+document.getElementById("slide").src=imagenes[i];
 
 }
 
-document.getElementById("slider").src=imagenes[i]
-
-}
-
-setInterval(cambiarImagen,3000)
+setInterval(cambiar,4000);
 
 </script>
 
