@@ -1,44 +1,37 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" 
-content="width=device-width, initial-scale=1.0">
-  <title>Lavandería Premium</title>
-  <style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lavandería Premium</title>
+
+<style>
 
 body{
 margin:0;
 font-family:Arial;
-background:url("https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c");
-background-size:cover;
-background-attachment:fixed;
 color:white;
-}
-
-/* CAPA OSCURA */
-
-.overlay{
-background:rgba(0,0,0,0.7);
-min-height:100vh;
+background:black;
 }
 
 /* MENU */
 
-nav{
+header{
+background:#111;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px;
-background:black;
+box-shadow:0 0 10px black;
 }
 
-.logo{
-font-size:24px;
-font-weight:bold;
-color:#ff3b3b;
+header h1{
+color:red;
 }
 
-.search{
+input{
 padding:8px;
 border-radius:20px;
 border:none;
@@ -48,34 +41,42 @@ border:none;
 
 .slider{
 width:100%;
-height:300px;
-position:relative;
+height:400px;
 overflow:hidden;
+position:relative;
 }
 
 .slide{
-width:100%;
-height:300px;
-object-fit:cover;
 position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
 opacity:0;
-transition:opacity 1s;
+transition:1s;
+}
+
+.slide.active{
+opacity:1;
 }
 
 /* SERVICIOS */
 
 .servicios{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
 padding:40px;
+gap:20px;
 }
 
 .card{
-background:#1c1c1c;
+background:#111;
+padding:20px;
+width:250px;
 border-radius:15px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
+text-align:center;
+box-shadow:0 0 15px black;
 transition:0.3s;
 }
 
@@ -85,52 +86,21 @@ transform:scale(1.05);
 
 .card img{
 width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.card h3{
-text-align:center;
-padding:10px;
-}
-
-.btn{
-background:#e63946;
-color:white;
-border:none;
-padding:12px;
-width:100%;
-cursor:pointer;
-font-size:16px;
-}
-
-/* FORMULARIO */
-
-.formulario{
-background:#1c1c1c;
-margin:40px;
-padding:30px;
-border-radius:15px;
-}
-
-input,textarea{
-width:100%;
-padding:10px;
-margin:10px 0;
 border-radius:10px;
-border:none;
 }
 
-/* CARRITO */
+/* MAPA */
 
-.carrito{
-position:fixed;
-top:90px;
-right:20px;
-background:#1c1c1c;
-padding:20px;
+.mapa{
+padding:40px;
+text-align:center;
+}
+
+iframe{
+width:90%;
+height:300px;
+border:0;
 border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,0.5);
 }
 
 /* WHATSAPP */
@@ -143,118 +113,170 @@ background:#25D366;
 padding:15px 20px;
 border-radius:50px;
 color:white;
-text-decoration:none;
 font-weight:bold;
-animation:flotar 2s infinite;
+text-decoration:none;
+box-shadow:0 0 10px black;
 }
 
-@keyframes flotar{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
-
-/* BURBUJAS */
-
-.bubble{
+.whatsapp2{
 position:fixed;
-bottom:-100px;
-background:rgba(255,255,255,0.2);
-border-radius:50%;
-animation:subir 10s infinite;
+bottom:80px;
+right:20px;
+background:#128C7E;
+padding:15px 20px;
+border-radius:50px;
+color:white;
+font-weight:bold;
+text-decoration:none;
+box-shadow:0 0 10px black;
 }
 
-@keyframes subir{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+background:#111;
+margin-top:30px;
 }
 
-</style></head><body><div class="overlay"><nav><div class="logo">Lavandería Premium</div><input class="search" placeholder="Buscar servicio"></nav><div class="slider"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" class="slide">
-<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1" class="slide">
-<img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30" class="slide"></div><section class="servicios"><div class="card"><img src="https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c"><h3>Lavado de Ropa</h3><button class="btn" onclick="agregar('Lavado de Ropa')">Agregar</button>
+</style>
+</head>
 
-</div><div class="card"><img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30"><h3>Lavado de Alfombras</h3><button class="btn" onclick="agregar('Lavado de Alfombras')">Agregar</button>
+<body>
 
-</div><div class="card"><img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6"><h3>Limpieza de Zapatos</h3><button class="btn" onclick="agregar('Limpieza de Zapatos')">Agregar</button>
+<header>
 
-</div></section><div class="formulario"><h2>Solicitar Recolección</h2><input id="nombre" placeholder="Nombre"><input id="direccion" placeholder="Dirección"><textarea id="mensaje" placeholder="Servicio que necesitas"></textarea><button class="btn" onclick="enviar()">Enviar Pedido</button>
+<h1>Lavandería Premium</h1>
 
-</div><div class="carrito"><h3>Pedidos</h3><ul id="lista"></ul></div><a class="whatsapp" href="https://wa.me/525587741101">WhatsApp</a>
+<input type="text" placeholder="Buscar servicio">
 
-</div><script>
+</header>
 
-/* SLIDER */
 
-let slides=document.querySelectorAll(".slide")
-let index=0
+<!-- SLIDER -->
 
-function cambiarFoto(){
+<div class="slider">
 
-slides.forEach((img)=>{img.style.opacity=0})
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952')"></div>
 
-slides[index].style.opacity=1
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1604335399105-a0c585fd81a1')"></div>
 
-index++
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1626808642875-0aa545482dfb')"></div>
 
-if(index>=slides.length){index=0}
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1582735689369-4fe89db7114c')"></div>
+
+</div>
+
+
+
+<!-- SERVICIOS -->
+
+<section class="servicios">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+
+<h2>Lavado</h2>
+
+<p>Lavado profesional con productos premium.</p>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1626808642875-0aa545482dfb">
+
+<h2>Secado</h2>
+
+<p>Secado rápido con tecnología moderna.</p>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
+
+<h2>Lavado Express</h2>
+
+<p>Entrega rápida el mismo día.</p>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c">
+
+<h2>Lavado de Alfombras</h2>
+
+<p>Limpieza profunda para alfombras.</p>
+
+</div>
+
+</section>
+
+
+
+<!-- MAPA -->
+
+<section class="mapa">
+
+<h2>Solicitar recolección</h2>
+
+<p>Indica tu ubicación</p>
+
+<iframe src="https://maps.google.com/maps?q=mexico&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+
+</section>
+
+
+
+<!-- WHATSAPP -->
+
+<a class="whatsapp" href="https://wa.me/525587741101">
+WhatsApp
+</a>
+
+<a class="whatsapp2" href="https://wa.me/525500000000">
+Soporte
+</a>
+
+
+<footer>
+
+Lavandería Premium © 2026
+
+</footer>
+
+
+
+<script>
+
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function cambiar(){
+
+slides[index].classList.remove("active");
+
+index++;
+
+if(index >= slides.length){
+index = 0;
+}
+
+slides[index].classList.add("active");
 
 }
 
-setInterval(cambiarFoto,3000)
+setInterval(cambiar,4000);
 
-cambiarFoto()
+</script>
 
-/* CARRITO */
 
-let pedidos=[]
-
-function agregar(servicio){
-
-pedidos.push(servicio)
-
-let lista=document.getElementById("lista")
-
-let item=document.createElement("li")
-
-item.textContent=servicio
-
-lista.appendChild(item)
-
-}
-
-/* ENVIAR A WHATSAPP */
-
-function enviar(){
-
-let nombre=document.getElementById("nombre").value
-let direccion=document.getElementById("direccion").value
-let mensaje=document.getElementById("mensaje").value
-
-let texto="Pedido Lavandería Premium%0A"
-texto+="Nombre: "+nombre+"%0A"
-texto+="Dirección: "+direccion+"%0A"
-texto+="Servicios: "+pedidos.join(", ")+"%0A"
-texto+="Mensaje: "+mensaje
-
-window.open("https://wa.me/525587741101?text="+texto)
-
-}
-
-/* BURBUJAS */
-
-for(let i=0;i<15;i++){
-
-let bubble=document.createElement("div")
-
-bubble.className="bubble"
-
-bubble.style.width=Math.random()*40+"px"
-bubble.style.height=bubble.style.width
-bubble.style.left=Math.random()*100+"%"
-bubble.style.animationDuration=(5+Math.random()*10)+"s"
-
-document.body.appendChild(bubble)
-
-}
-
-</script></body></html>
+</body>
+</html>
