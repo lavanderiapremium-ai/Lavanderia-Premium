@@ -13,144 +13,88 @@
 body{
 margin:0;
 font-family:Arial;
-color:white;
 background:black;
+color:white;
 }
 
-/* HERO */
+/* PORTADA */
 
 .hero{
-height:90vh;
-background:url("https://images.unsplash.com/photo-1604335399105-a0c585fd81a1") center/cover;
+height:70vh;
+background:url("https://images.unsplash.com/photo-1517673132405-a56a62b18caf");
+background-size:cover;
+background-position:center;
 display:flex;
-align-items:center;
+flex-direction:column;
 justify-content:center;
+align-items:center;
 text-align:center;
-position:relative;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-}
-
-.hero-content{
-position:relative;
-z-index:2;
 }
 
 .hero h1{
 font-size:50px;
-letter-spacing:3px;
+margin:0;
 }
+
+.hero p{
+font-size:20px;
+opacity:0.8;
+}
+
+/* LEMA */
 
 .lema{
+text-align:center;
+padding:30px;
 font-size:22px;
-margin-top:10px;
-color:#ff4d4d;
-}
-
-/* MENU */
-
-.menu{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:20px;
 background:#111;
-}
-
-.menu a{
-color:white;
-text-decoration:none;
-font-weight:bold;
-padding:10px 20px;
-background:#b30000;
-border-radius:10px;
-transition:0.3s;
-}
-
-.menu a:hover{
-background:red;
-transform:scale(1.1);
 }
 
 /* SERVICIOS */
 
 .servicios{
-padding:40px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+padding:40px;
 }
 
-.tarjeta{
+.card{
 background:#111;
 border-radius:15px;
 overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
+box-shadow:0 0 20px rgba(0,0,0,0.6);
 transition:0.3s;
 }
 
-.tarjeta:hover{
+.card:hover{
 transform:scale(1.05);
 }
 
-.tarjeta img{
+.card img{
 width:100%;
 height:200px;
 object-fit:cover;
 }
 
-.tarjeta h3{
-text-align:center;
-margin:10px;
+.card h3{
+margin:15px;
 }
 
-.tarjeta p{
-text-align:center;
-padding:10px;
+.card p{
+margin:15px;
+opacity:0.8;
 }
 
-.boton{
+.btn{
 display:block;
-margin:15px auto;
-padding:10px 25px;
-background:red;
-border:none;
+margin:15px;
+padding:10px;
+background:#00c853;
 color:white;
-font-weight:bold;
-border-radius:10px;
-cursor:pointer;
-}
-
-.boton:hover{
-background:#ff3333;
-}
-
-/* GALERIA */
-
-.galeria{
-padding:40px;
 text-align:center;
-background:#111;
-}
-
-.slider{
-max-width:800px;
-margin:auto;
-}
-
-.slider img{
-width:100%;
-height:350px;
-object-fit:cover;
-border-radius:15px;
+border-radius:8px;
+text-decoration:none;
 }
 
 /* MAPA */
@@ -162,9 +106,9 @@ text-align:center;
 
 iframe{
 width:90%;
-height:300px;
-border-radius:15px;
+height:350px;
 border:none;
+border-radius:10px;
 }
 
 /* WHATSAPP */
@@ -175,19 +119,25 @@ bottom:20px;
 right:20px;
 background:#25D366;
 color:white;
-padding:18px;
-border-radius:50%;
-font-size:25px;
+padding:15px;
+border-radius:50px;
 text-decoration:none;
-box-shadow:0 5px 20px rgba(0,0,0,0.5);
+font-size:18px;
+box-shadow:0 0 10px black;
 }
 
-/* FOOTER */
+/* CARRUSEL */
 
-footer{
-background:#111;
-text-align:center;
-padding:20px;
+.carrusel{
+width:100%;
+height:300px;
+overflow:hidden;
+}
+
+.carrusel img{
+width:100%;
+height:300px;
+object-fit:cover;
 }
 
 </style>
@@ -196,186 +146,139 @@ padding:20px;
 
 <body>
 
-<!-- HERO -->
+<!-- PORTADA -->
 
-<section class="hero">
-
-<div class="hero-content">
+<div class="hero">
 
 <h1>Lavandería Premium</h1>
 
-<p class="lema">
-"Elegancia y limpieza que se siente en cada prenda"
-</p>
+<p>Servicio profesional de lavado</p>
 
 </div>
 
-</section>
+<!-- LEMA -->
 
-<!-- MENU -->
+<div class="lema">
 
-<div class="menu">
+✨ "Tu ropa impecable, tu tiempo libre." ✨
 
-<a href="#">Inicio</a>
-<a href="#servicios">Servicios</a>
-<a href="#mapa">Recolección</a>
+</div>
+
+<!-- CARRUSEL -->
+
+<div class="carrusel">
+
+<img id="slider" src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf">
 
 </div>
 
 <!-- SERVICIOS -->
 
-<section id="servicios" class="servicios">
+<div class="servicios">
 
-<div class="tarjeta">
+<div class="card">
 
-<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+<img src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf">
 
 <h3>Lavado</h3>
 
 <p>Lavado profesional con productos premium.</p>
 
-<button class="boton" onclick="pedir('Lavado')">Pedir</button>
+<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
 
 </div>
 
-<div class="tarjeta">
-
-<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
-
-<h3>Secado</h3>
-
-<p>Secado rápido con maquinaria moderna.</p>
-
-<button class="boton" onclick="pedir('Secado')">Pedir</button>
-
-</div>
-
-<div class="tarjeta">
+<div class="card">
 
 <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1">
 
+<h3>Secado</h3>
+
+<p>Secado rápido con tecnología moderna.</p>
+
+<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c">
+
 <h3>Lavado Express</h3>
 
-<p>Entrega rápida el mismo día.</p>
+<p>Entrega el mismo día.</p>
 
-<button class="boton" onclick="pedir('Lavado Express')">Pedir</button>
-
-</div>
-
-<div class="tarjeta">
-
-<img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64">
-
-<h3>Alfombras</h3>
-
-<p>Limpieza profunda de alfombras.</p>
-
-<button class="boton" onclick="pedir('Alfombras')">Pedir</button>
+<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
 
 </div>
 
-<div class="tarjeta">
+<div class="card">
 
-<img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
 
-<h3>Zapatos</h3>
+<h3>Lavado de Alfombras</h3>
 
-<p>Limpieza elegante de calzado.</p>
+<p>Limpieza profunda para alfombras.</p>
 
-<button class="boton" onclick="pedir('Zapatos')">Pedir</button>
-
-</div>
-
-<div class="tarjeta">
-
-<img src="https://images.unsplash.com/photo-1616627984430-0d50c3e0d42c">
-
-<h3>Ropa delicada</h3>
-
-<p>Cuidado especial para prendas delicadas.</p>
-
-<button class="boton" onclick="pedir('Ropa delicada')">Pedir</button>
+<a class="btn" href="https://wa.me/525587741101">Solicitar</a>
 
 </div>
 
-</section>
-
-<!-- GALERIA -->
-
-<section class="galeria">
-
-<h2>Galería</h2>
-
-<div class="slider">
-
-<img id="slide" src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
-
 </div>
-
-</section>
 
 <!-- MAPA -->
 
-<section id="mapa" class="mapa">
+<div class="mapa">
 
 <h2>Zona de recolección</h2>
 
-<iframe src="https://maps.google.com/maps?q=Ciudad%20de%20Mexico&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+<iframe src="https://maps.google.com/maps?q=Mexico&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
 
-</section>
+</div>
 
-<footer>
+<!-- WHATSAPP -->
 
-Lavandería Premium © 2026
+<a class="whatsapp" href="https://wa.me/525587741101">
 
-</footer>
+WhatsApp
 
-<a class="whatsapp"
-href="https://wa.me/525587741101?text=Hola%20quiero%20información%20de%20lavandería"
-target="_blank">
-💬
 </a>
+
+<!-- SCRIPT CARRUSEL -->
 
 <script>
 
-/* PEDIDO */
-
-function pedir(servicio){
-
-let direccion = prompt("Escribe tu dirección para recoger la ropa:");
-
-let mensaje="Hola quiero pedir "+servicio+" mi dirección es: "+direccion;
-
-window.open("https://wa.me/525587741101?text="+encodeURIComponent(mensaje));
-
-}
-
-/* SLIDER */
-
 let imagenes=[
 
-"https://images.unsplash.com/photo-1604335399105-a0c585fd81a1",
-"https://images.unsplash.com/photo-1581578731548-c64695cc6952",
-"https://images.unsplash.com/photo-1593032465175-481ac7f401a0",
-"https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
+"https://images.unsplash.com/photo-1517673132405-a56a62b18caf",
 
-];
+"https://images.unsplash.com/photo-1626806787461-102c1bfaaea1",
 
-let i=0;
+"https://images.unsplash.com/photo-1582735689369-4fe89db7114c",
 
-function cambiar(){
+"https://images.unsplash.com/photo-1441986300917-64674bd600d8",
 
-i++;
+"https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+
+]
+
+let i=0
+
+function cambiarImagen(){
+
+i++
 
 if(i>=imagenes.length){
-i=0;
-}
 
-document.getElementById("slide").src=imagenes[i];
+i=0
 
 }
 
-setInterval(cambiar,4000);
+document.getElementById("slider").src=imagenes[i]
+
+}
+
+setInterval(cambiarImagen,3000)
 
 </script>
 
