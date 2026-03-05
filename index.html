@@ -9,73 +9,109 @@
 <style>
 
 body{
-font-family: Arial, sans-serif;
+font-family: Arial;
 margin:0;
-background:#f4f6f8;
-color:#333;
+background:#f5f7fb;
 }
 
+/* HEADER */
+
 header{
-background:#0f172a;
+background:linear-gradient(135deg,#1e3a8a,#2563eb);
 color:white;
 text-align:center;
-padding:40px 20px;
+padding:60px 20px;
 }
 
 header h1{
-margin:0;
 font-size:40px;
-letter-spacing:2px;
 }
 
-header p{
-margin-top:10px;
-font-size:18px;
-color:#cbd5f5;
-}
+/* SERVICIOS */
 
 .servicios{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:20px;
+gap:25px;
 padding:40px;
 }
 
 .card{
 background:white;
+width:280px;
 border-radius:15px;
-width:300px;
 overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:transform 0.3s, box-shadow 0.3s;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+transition:0.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 15px 25px rgba(0,0,0,0.2);
 }
 
 .card img{
 width:100%;
-height:200px;
+height:180px;
 object-fit:cover;
 }
 
 .card h3{
-padding:15px 20px 0 20px;
+padding:10px;
 }
 
 .card p{
-padding:10px 20px 20px 20px;
+padding:0 10px 15px;
+color:#555;
 }
 
-footer{
+/* BOTONES */
+
+.boton{
+display:block;
+margin:15px;
+padding:12px;
+background:#22c55e;
+color:white;
+text-align:center;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* SERVICIO EXPRESS */
+
+.express{
 background:#0f172a;
 color:white;
 text-align:center;
-padding:20px;
+padding:50px 20px;
 }
+
+.express h2{
+font-size:30px;
+margin-bottom:30px;
+}
+
+.iconos{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.icono{
+font-size:40px;
+animation:flotar 2s infinite ease-in-out;
+}
+
+@keyframes flotar{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+/* WHATSAPP */
 
 .whatsapp{
 position:fixed;
@@ -84,25 +120,17 @@ right:20px;
 background:#25D366;
 color:white;
 padding:15px 20px;
-border-radius:50px;
-font-size:18px;
-text-decoration:none;
+border-radius:30px;
 font-weight:bold;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-animation:flotar 2s infinite;
+text-decoration:none;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-@keyframes flotar{
-0%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-100%{transform:translateY(0)}
-}
-
-@media(max-width:768px){
-.servicios{
-flex-direction:column;
-align-items:center;
-}
+footer{
+text-align:center;
+padding:20px;
+background:#1e3a8a;
+color:white;
 }
 
 </style>
@@ -111,39 +139,96 @@ align-items:center;
 <body>
 
 <header>
+
 <h1>Lavandería Premium</h1>
-<p>Servicio profesional de lavado, planchado y entrega a domicilio</p>
+<p>Servicio profesional de lavado</p>
+
 </header>
+
 
 <section class="servicios">
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
-<h3>Lavado Profesional</h3>
-<p>Lavamos tu ropa con productos de alta calidad para que quede impecable.</p>
+
+<h3>Lavado</h3>
+
+<p>Lavamos tu ropa con productos premium.</p>
+
+<a class="boton" href="https://wa.me/525587741101?text=Hola quiero servicio de lavado">
+Pedir Servicio
+</a>
+
 </div>
 
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
+
+<img src="https://images.unsplash.com/photo-1595433562696-2d19bca6c04c">
+
 <h3>Planchado</h3>
-<p>Servicio de planchado profesional para que tu ropa luzca perfecta.</p>
+
+<p>Planchado profesional para tu ropa.</p>
+
+<a class="boton" href="https://wa.me/525587741101?text=Hola quiero servicio de planchado">
+Pedir Servicio
+</a>
+
 </div>
 
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1">
+
+<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
+
 <h3>Entrega a domicilio</h3>
-<p>Recogemos y entregamos tu ropa en la puerta de tu casa.</p>
+
+<p>Recogemos y entregamos tu ropa.</p>
+
+<a class="boton" href="https://wa.me/525587741101?text=Hola quiero entrega a domicilio">
+Pedir Servicio
+</a>
+
 </div>
 
 </section>
 
+
+<section class="express">
+
+<h2>Servicio Express</h2>
+
+<div class="iconos">
+
+<div class="icono">⚡</div>
+
+<div class="icono">🧺</div>
+
+<div class="icono">🚚</div>
+
+<div class="icono">👕</div>
+
+</div>
+
+<p>Lavado rápido en menos de 2 horas</p>
+
+</section>
+
+
 <footer>
-<p>© 2026 Lavandería Premium</p>
-<p>WhatsApp: +52 5587741101</p>
+
+Lavandería Premium © 2026
+
 </footer>
 
-<a href="https://wa.me/525587741101" class="whatsapp">
-💬 Pedir servicio
+
+<!-- BOTON WHATSAPP DOBLE -->
+
+<a class="whatsapp" 
+href="https://wa.me/525587741101?text=Hola quiero información de lavandería">
+
+WhatsApp
 </a>
 
 </body>
