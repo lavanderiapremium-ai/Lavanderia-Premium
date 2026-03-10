@@ -6,363 +6,85 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lavandería Premium</title>
+<title>Tienda de Uniformes Quirúrgicos</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-
-body{
-margin:0;
-font-family:'Segoe UI',Arial;
-background:#0f172a;
-color:#e5e7eb;
-}
-
-/* HERO */
-
-.hero{
-height:85vh;
-background:url("https://images.unsplash.com/photo-1517673132405-a56a62b18caf");
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-position:relative;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
-background:rgba(0,0,0,0.6);
-}
-
-.hero div{
-position:relative;
-z-index:2;
-}
-
-.hero h1{
-font-size:55px;
-letter-spacing:3px;
-}
-
-.hero p{
-font-size:22px;
-color:#38bdf8;
-}
-
-.pedir-btn{
-margin-top:20px;
-padding:15px 40px;
-font-size:18px;
-background:linear-gradient(45deg,#2563eb,#38bdf8);
-border:none;
-border-radius:40px;
-color:white;
-cursor:pointer;
-}
-
-/* MENU */
-
-.menu{
-background:#020617;
-display:flex;
-justify-content:center;
-gap:20px;
-padding:18px;
-}
-
-.menu a{
-color:white;
-text-decoration:none;
-background:#2563eb;
-padding:12px 25px;
-border-radius:30px;
-font-weight:bold;
-}
-
-/* SERVICIOS */
-
-.servicios{
-padding:50px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:#020617;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 10px 40px rgba(0,0,0,0.8);
-transition:0.3s;
-text-align:center;
-}
-
-.card:hover{
-transform:translateY(-8px);
-}
-
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.icono{
-font-size:40px;
-color:#38bdf8;
-margin-top:15px;
-}
-
-.btn{
-display:block;
-margin:20px auto;
-padding:12px 30px;
-background:#2563eb;
-border:none;
-border-radius:30px;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* FORMULARIO */
-
-.formulario{
-padding:50px;
-text-align:center;
-}
-
-input,select{
-padding:12px;
-margin:10px;
-border-radius:10px;
-border:none;
-width:250px;
-}
-
-/* MAPA */
-
-.mapa{
-padding:50px;
-text-align:center;
-}
-
-iframe{
-width:90%;
-height:320px;
-border:none;
-border-radius:15px;
-}
-
-/* WHATSAPP */
-
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:white;
-padding:20px;
-border-radius:50%;
-font-size:28px;
-text-decoration:none;
-}
-
-/* FOOTER */
-
-footer{
-background:#020617;
-text-align:center;
-padding:25px;
-color:#94a3b8;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- HERO -->
+<header>
 
-<div class="hero">
+<h1>Uniformes Quirúrgicos Profesionales</h1>
 
-<div>
+</header>
 
-<h1>Lavandería Premium</h1>
+<section class="productos">
 
-<p>Tu ropa limpia, fresca y lista para usar</p>
+<div class="producto">
 
-<button class="pedir-btn" onclick="scrollToForm()">Pedir Servicio</button>
+<img src="https://i.imgur.com/0KFBHTB.jpg">
 
-</div>
+<h3>Uniforme Azul</h3>
 
-</div>
+<p>$450 MXN</p>
 
-<!-- MENU -->
-
-<div class="menu">
-
-<a href="#">Inicio</a>
-<a href="#servicios">Servicios</a>
-<a href="#pedido">Pedido</a>
-<a href="#mapa">Ubicación</a>
+<button onclick="agregar('Uniforme Azul',450)">Agregar</button>
 
 </div>
 
-<!-- SERVICIOS -->
+<div class="producto">
 
-<section id="servicios" class="servicios">
+<img src="https://i.imgur.com/Td6XG9T.jpg">
 
-<div class="card">
+<h3>Uniforme Verde</h3>
 
-<img src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf">
+<p>$450 MXN</p>
 
-<div class="icono"><i class="fas fa-soap"></i></div>
-
-<h3>Lavado Profesional</h3>
-
-<p>Limpieza profunda con productos de alta calidad.</p>
-
-<button class="btn" onclick="pedir('Lavado')">Solicitar</button>
+<button onclick="agregar('Uniforme Verde',450)">Agregar</button>
 
 </div>
 
-<div class="card">
+<div class="producto">
 
-<img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1">
+<img src="https://i.imgur.com/b0W9X4S.jpg">
 
-<div class="icono"><i class="fas fa-wind"></i></div>
+<h3>Uniforme Negro</h3>
 
-<h3>Secado</h3>
+<p>$480 MXN</p>
 
-<p>Secado rápido con tecnología moderna.</p>
-
-<button class="btn" onclick="pedir('Secado')">Solicitar</button>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c">
-
-<div class="icono"><i class="fas fa-bolt"></i></div>
-
-<h3>Lavado Express</h3>
-
-<p>Entrega el mismo día.</p>
-
-<button class="btn" onclick="pedir('Express')">Solicitar</button>
-
-</div>
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
-
-<div class="icono"><i class="fas fa-couch"></i></div>
-
-<h3>Alfombras</h3>
-
-<p>Limpieza profunda de alfombras.</p>
-
-<button class="btn" onclick="pedir('Alfombras')">Solicitar</button>
+<button onclick="agregar('Uniforme Negro',480)">Agregar</button>
 
 </div>
 
 </section>
 
-<!-- FORMULARIO PEDIDO -->
+<section class="carrito">
 
-<section id="pedido" class="formulario">
+<h2>Carrito</h2>
 
-<h2>Solicitar Recolección</h2>
+<ul id="lista"></ul>
 
-<input id="nombre" placeholder="Tu nombre">
-
-<input id="direccion" placeholder="Tu dirección">
-
-<select id="servicio">
-
-<option>Lavado</option>
-<option>Secado</option>
-<option>Lavado Express</option>
-<option>Alfombras</option>
-
-</select>
-
-<br>
-
-<button class="btn" onclick="enviarPedido()">Enviar Pedido</button>
+<p>Total: $<span id="total">0</span></p>
 
 </section>
 
-<!-- MAPA -->
+<section class="pedido">
 
-<div id="mapa" class="mapa">
+<h2>Datos de envío</h2>
 
-<h2>📍 Recolección a domicilio</h2>
+<input type="text" id="nombre" placeholder="Nombre">
 
-<p>Carr. Picacho-Ajusco 128, Paraje 38, Tlalpan</p>
+<input type="text" id="telefono" placeholder="Teléfono">
 
-<iframe src="https://www.google.com/maps?q=19.2672081,-99.2084152&z=18&output=embed"></iframe>
+<input type="text" id="direccion" placeholder="Dirección de envío">
 
-</div>
+<button onclick="comprar()">Finalizar pedido</button>
 
-<footer>
+</section>
 
-Lavandería Premium © 2026
-
-</footer>
-
-<a class="whatsapp"
-href="https://wa.me/525587741101"
-target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<script>
-
-function pedir(servicio){
-
-let direccion = prompt("Escribe tu dirección:");
-
-let mensaje="Hola quiero pedir "+servicio+" mi dirección es: "+direccion;
-
-window.open("https://wa.me/525587741101?text="+encodeURIComponent(mensaje));
-
-}
-
-function enviarPedido(){
-
-let nombre=document.getElementById("nombre").value;
-
-let direccion=document.getElementById("direccion").value;
-
-let servicio=document.getElementById("servicio").value;
-
-let mensaje="Hola soy "+nombre+" quiero "+servicio+" mi dirección es "+direccion;
-
-window.open("https://wa.me/525587741101?text="+encodeURIComponent(mensaje));
-
-}
-
-function scrollToForm(){
-
-document.getElementById("pedido").scrollIntoView({behavior:"smooth"});
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
