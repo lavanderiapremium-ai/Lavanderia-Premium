@@ -1,14 +1,148 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Uniformes Médicos Pro</title>
+<title>Uniformes Quirúrgicos</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f2f6ff;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#2b7cff,#00c6ff);
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h1{
+margin:0;
+}
+
+/* CATALOGO */
+
+.catalogo{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.producto{
+
+background:white;
+border-radius:12px;
+padding:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+text-align:center;
+
+}
+
+.producto img{
+
+width:100%;
+border-radius:10px;
+
+}
+
+.precio{
+
+font-size:20px;
+color:#2b7cff;
+font-weight:bold;
+
+}
+
+select{
+
+width:100%;
+padding:8px;
+margin-top:10px;
+
+}
+
+button{
+
+margin-top:10px;
+background:#2b7cff;
+border:none;
+color:white;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+width:100%;
+
+}
+
+/* CARRITO */
+
+.carrito{
+
+position:fixed;
+right:0;
+top:0;
+width:320px;
+height:100%;
+background:white;
+box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+padding:20px;
+overflow:auto;
+
+}
+
+.item{
+
+display:flex;
+gap:10px;
+margin-bottom:15px;
+border-bottom:1px solid #eee;
+padding-bottom:10px;
+
+}
+
+.item img{
+
+width:50px;
+border-radius:6px;
+
+}
+
+.total{
+
+font-size:20px;
+font-weight:bold;
+margin-top:10px;
+
+}
+
+input{
+
+width:100%;
+padding:10px;
+margin-top:8px;
+border-radius:8px;
+border:1px solid #ccc;
+
+}
+
+.whatsapp{
+
+background:#25D366;
+
+}
+
+</style>
 
 </head>
 
@@ -16,11 +150,7 @@
 
 <header>
 
-<h1>🩺 Uniformes Médicos</h1>
-
-<div class="carrito-icono">
-🛒 <span id="contador">0</span>
-</div>
+<h1>🩺 Uniformes Quirúrgicos</h1>
 
 </header>
 
@@ -28,87 +158,205 @@
 
 <div class="producto">
 
-<img src="https://i.imgur.com/0KFBHTB.jpg">
+<img src="img/rosa.jpg">
+
+<h3>Uniforme Rosa</h3>
+
+<p class="precio">$400</p>
+
+<select id="talla1">
+
+<option>CH</option>
+<option>M</option>
+<option>G</option>
+<option>XL</option>
+
+</select>
+
+<button onclick="agregar('Uniforme Rosa',400,'img/rosa.jpg','talla1')">Agregar</button>
+
+</div>
+
+<div class="producto">
+
+<img src="img/amarillo.jpg">
+
+<h3>Uniforme Amarillo</h3>
+
+<p class="precio">$400</p>
+
+<select id="talla2">
+
+<option>CH</option>
+<option>M</option>
+<option>G</option>
+<option>XL</option>
+
+</select>
+
+<button onclick="agregar('Uniforme Amarillo',400,'img/amarillo.jpg','talla2')">Agregar</button>
+
+</div>
+
+<div class="producto">
+
+<img src="img/estampado.jpg">
+
+<h3>Uniforme Estampado</h3>
+
+<p class="precio">$400</p>
+
+<select id="talla3">
+
+<option>CH</option>
+<option>M</option>
+<option>G</option>
+<option>XL</option>
+
+</select>
+
+<button onclick="agregar('Uniforme Estampado',400,'img/estampado.jpg','talla3')">Agregar</button>
+
+</div>
+
+<div class="producto">
+
+<img src="img/azul.jpg">
 
 <h3>Uniforme Azul</h3>
 
-<p>$450</p>
+<p class="precio">$400</p>
 
-<button onclick="agregar('Uniforme Azul',450)">Agregar</button>
+<select id="talla4">
 
-</div>
+<option>CH</option>
+<option>M</option>
+<option>G</option>
+<option>XL</option>
 
-<div class="producto">
+</select>
 
-<img src="https://i.imgur.com/Td6XG9T.jpg">
-
-<h3>Uniforme Verde</h3>
-
-<p>$450</p>
-
-<button onclick="agregar('Uniforme Verde',450)">Agregar</button>
+<button onclick="agregar('Uniforme Azul',400,'img/azul.jpg','talla4')">Agregar</button>
 
 </div>
 
 <div class="producto">
 
-<img src="https://i.imgur.com/b0W9X4S.jpg">
+<img src="img/rojo.jpg">
 
-<h3>Uniforme Negro</h3>
+<h3>Uniforme Rojo</h3>
 
-<p>$480</p>
+<p class="precio">$400</p>
 
-<button onclick="agregar('Uniforme Negro',480)">Agregar</button>
+<select id="talla5">
+
+<option>CH</option>
+<option>M</option>
+<option>G</option>
+<option>XL</option>
+
+</select>
+
+<button onclick="agregar('Uniforme Rojo',400,'img/rojo.jpg','talla5')">Agregar</button>
 
 </div>
 
 </section>
 
-<section class="carrito">
+<!-- CARRITO -->
 
-<h2>Carrito</h2>
+<div class="carrito">
 
-<ul id="lista"></ul>
+<h2>🛒 Carrito</h2>
 
-<p>Subtotal: $<span id="subtotal">0</span></p>
+<div id="lista"></div>
 
-<p>Envío: $<span id="envio">0</span></p>
+<p class="total">Total: $<span id="total">0</span></p>
 
-<p>Total: $<span id="total">0</span></p>
-
-</section>
-
-<section class="pago">
-
-<h2>Pago</h2>
+<h3>Datos de envío</h3>
 
 <input id="nombre" placeholder="Nombre">
 
-<input id="direccion" placeholder="Dirección de envío">
+<input id="direccion" placeholder="Dirección">
 
-<input id="tarjeta" placeholder="Número de tarjeta">
+<button class="whatsapp" onclick="enviar()">Enviar pedido</button>
 
-<input id="exp" placeholder="Expiración">
+</div>
 
-<input id="cvv" placeholder="CVV">
+<script>
 
-<button onclick="pagar()">Pagar</button>
+let carrito=[]
+let total=0
 
-</section>
+function agregar(nombre,precio,imagen,tallaId){
 
-<section class="reseñas">
+let talla=document.getElementById(tallaId).value
 
-<h2>Reseñas</h2>
+carrito.push({nombre,precio,imagen,talla})
 
-<textarea id="comentario" placeholder="Escribe tu reseña"></textarea>
+total+=precio
 
-<button onclick="agregarReseña()">Publicar</button>
+actualizar()
 
-<div id="listaReseñas"></div>
+}
 
-</section>
+function actualizar(){
 
-<script src="script.js"></script>
+let lista=document.getElementById("lista")
+
+lista.innerHTML=""
+
+carrito.forEach(p=>{
+
+let div=document.createElement("div")
+
+div.className="item"
+
+div.innerHTML=`
+
+<img src="${p.imagen}">
+<div>
+<b>${p.nombre}</b><br>
+Talla: ${p.talla}<br>
+$${p.precio}
+</div>
+
+`
+
+lista.appendChild(div)
+
+})
+
+document.getElementById("total").textContent=total
+
+}
+
+function enviar(){
+
+let nombre=document.getElementById("nombre").value
+let direccion=document.getElementById("direccion").value
+
+let mensaje="Pedido de uniformes:%0A"
+
+carrito.forEach(p=>{
+
+mensaje+=p.nombre+" Talla:"+p.talla+" $"+p.precio+"%0A"
+
+})
+
+mensaje+="Total:$"+total+"%0A"
+
+mensaje+="Cliente:"+nombre+"%0A"
+
+mensaje+="Dirección:"+direccion
+
+let numero="5215576673038"
+
+window.open("https://wa.me/"+numero+"?text="+mensaje)
+
+}
+
+</script>
 
 </body>
 </html>
