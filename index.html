@@ -27,7 +27,6 @@ justify-content:space-between;
 align-items:center;
 position:sticky;
 top:0;
-z-index:10;
 }
 
 nav ul{
@@ -52,7 +51,7 @@ gap:20px;
 padding:20px;
 }
 
-/* PRODUCTO */
+/* PRODUCTOS */
 
 .producto{
 background:white;
@@ -60,19 +59,12 @@ border-radius:12px;
 padding:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 text-align:center;
-overflow:hidden;
-animation:aparecer .6s ease;
-}
-
-@keyframes aparecer{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
 }
 
 .producto img{
 width:100%;
 border-radius:10px;
-transition:transform .3s;
+transition:0.3s;
 }
 
 .producto img:hover{
@@ -93,58 +85,14 @@ margin-top:10px;
 
 button{
 margin-top:10px;
-background:#2b7cff;
+background:#25D366;
 border:none;
 color:white;
-padding:10px;
+padding:12px;
 border-radius:8px;
 cursor:pointer;
 width:100%;
-}
-
-/* CARRITO */
-
-.carrito{
-position:fixed;
-right:0;
-top:0;
-width:320px;
-height:100%;
-background:white;
-box-shadow:-5px 0 20px rgba(0,0,0,0.2);
-padding:20px;
-overflow:auto;
-}
-
-.item{
-display:flex;
-gap:10px;
-margin-bottom:15px;
-border-bottom:1px solid #eee;
-padding-bottom:10px;
-}
-
-.item img{
-width:50px;
-border-radius:6px;
-}
-
-.total{
-font-size:20px;
 font-weight:bold;
-margin-top:10px;
-}
-
-input{
-width:100%;
-padding:10px;
-margin-top:8px;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
-.whatsapp{
-background:#25D366;
 }
 
 footer{
@@ -161,12 +109,11 @@ color:#777;
 
 <nav>
 
-<h2>🩺 Uniformes</h2>
+<h2>🩺 Uniformes Quirúrgicos</h2>
 
 <ul>
 <li><a href="#">Inicio</a></li>
 <li><a href="#">Catálogo</a></li>
-<li><a href="#">Reseñas</a></li>
 <li><a href="#">Contacto</a></li>
 </ul>
 
@@ -186,7 +133,10 @@ color:#777;
 <option>XL</option>
 </select>
 
-<button onclick="agregar('Uniforme Rosa',400,'img/rosa.jpg','talla1')">Agregar</button>
+<button onclick="comprar('Uniforme Rosa',400,'talla1')">
+Comprar por WhatsApp
+</button>
+
 </div>
 
 <div class="producto">
@@ -201,7 +151,10 @@ color:#777;
 <option>XL</option>
 </select>
 
-<button onclick="agregar('Uniforme Amarillo',400,'img/amarillo.jpg','talla2')">Agregar</button>
+<button onclick="comprar('Uniforme Amarillo',400,'talla2')">
+Comprar por WhatsApp
+</button>
+
 </div>
 
 <div class="producto">
@@ -216,7 +169,10 @@ color:#777;
 <option>XL</option>
 </select>
 
-<button onclick="agregar('Uniforme Azul',400,'img/azul.jpg','talla3')">Agregar</button>
+<button onclick="comprar('Uniforme Azul',400,'talla3')">
+Comprar por WhatsApp
+</button>
+
 </div>
 
 <div class="producto">
@@ -231,28 +187,13 @@ color:#777;
 <option>XL</option>
 </select>
 
-<button onclick="agregar('Uniforme Rojo',400,'img/rojo.jpg','talla4')">Agregar</button>
+<button onclick="comprar('Uniforme Rojo',400,'talla4')">
+Comprar por WhatsApp
+</button>
+
 </div>
 
 </section>
-
-<div class="carrito">
-
-<h2>🛒 Carrito</h2>
-
-<div id="lista"></div>
-
-<p class="total">Total: $<span id="total">0</span></p>
-
-<h3>Datos de envío</h3>
-
-<input id="nombre" placeholder="Nombre">
-
-<input id="direccion" placeholder="Dirección">
-
-<button class="whatsapp" onclick="enviar()">Enviar pedido</button>
-
-</div>
 
 <footer>
 © Uniformes Quirúrgicos
@@ -260,90 +201,14 @@ color:#777;
 
 <script>
 
-let carrito = []
+function comprar(producto,precio,tallaId){
 
-function agregar(nombre, precio, imagen, tallaId){
+let talla=document.getElementById(tallaId).value
 
-let talla = document.getElementById(tallaId).value
-
-let productoExistente = carrito.find(p => p.nombre === nombre && p.talla === talla)
-
-if(productoExistente){
-productoExistente.cantidad++
-}else{
-carrito.push({nombre,precio,imagen,talla,cantidad:1})
-}
-
-actualizar()
-
-}
-
-function actualizar(){
-
-let lista = document.getElementById("lista")
-lista.innerHTML=""
-
-let total = 0
-
-carrito.forEach((p,index)=>{
-
-let div=document.createElement("div")
-div.className="item"
-
-let subtotal = p.precio * p.cantidad
-total += subtotal
-
-div.innerHTML=`
-<img src="${p.imagen}">
-<div>
-<b>${p.nombre}</b><br>
-Talla: ${p.talla}<br>
-Cantidad: ${p.cantidad}<br>
-$${subtotal}
-<br>
-<button onclick="eliminar(${index})">Eliminar</button>
-</div>
-`
-
-lista.appendChild(div)
-
-})
-
-document.getElementById("total").textContent = total
-
-}
-
-function eliminar(index){
-carrito.splice(index,1)
-actualizar()
-}
-
-function enviar(){
-
-if(carrito.length===0){
-alert("El carrito está vacío")
-return
-}
-
-let nombre=document.getElementById("nombre").value
-let direccion=document.getElementById("direccion").value
-
-if(nombre==="" || direccion===""){
-alert("Completa tu nombre y dirección")
-return
-}
-
-let total=document.getElementById("total").textContent
-
-let mensaje="Pedido de uniformes:%0A"
-
-carrito.forEach(p=>{
-mensaje+=p.nombre+" Talla:"+p.talla+" Cant:"+p.cantidad+" $"+(p.precio*p.cantidad)+"%0A"
-})
-
-mensaje+="Total:$"+total+"%0A"
-mensaje+="Cliente:"+nombre+"%0A"
-mensaje+="Dirección:"+direccion
+let mensaje="Hola, quiero comprar:%0A"
+mensaje+=producto+"%0A"
+mensaje+="Talla: "+talla+"%0A"
+mensaje+="Precio: $"+precio
 
 let numero="5215576673038"
 
@@ -354,4 +219,4 @@ window.open("https://wa.me/"+numero+"?text="+mensaje)
 </script>
 
 </body>
-</html>
+  </html>
