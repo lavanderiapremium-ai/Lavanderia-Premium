@@ -347,16 +347,29 @@ color:#777;
 
 <script>
 
-let carrito=[]
-let total=0
+let carrito = []
 
-function agregar(nombre,precio,imagen,tallaId){
+function agregar(nombre, precio, imagen, tallaId){
 
-let talla=document.getElementById(tallaId).value
+let talla = document.getElementById(tallaId).value
 
-carrito.push({nombre,precio,imagen,talla})
+let productoExistente = carrito.find(p => p.nombre === nombre && p.talla === talla)
 
-total+=precio
+if(productoExistente){
+
+productoExistente.cantidad++
+
+}else{
+
+carrito.push({
+nombre,
+precio,
+imagen,
+talla,
+cantidad:1
+})
+
+}
 
 actualizar()
 
@@ -364,23 +377,40 @@ actualizar()
 
 function actualizar(){
 
-let lista=document.getElementById("lista")
+let lista = document.getElementById("lista")
 
 lista.innerHTML=""
 
-carrito.forEach(p=>{
+let total = 0
+
+carrito.forEach((p,index)=>{
 
 let div=document.createElement("div")
 
 div.className="item"
 
+let subtotal = p.precio * p.cantidad
+
+total += subtotal
+
 div.innerHTML=`
 
 <img src="${p.imagen}">
+
 <div>
+
 <b>${p.nombre}</b><br>
+
 Talla: ${p.talla}<br>
-$${p.precio}
+
+Cantidad: ${p.cantidad}<br>
+
+$${subtotal}
+
+<br>
+
+<button onclick="eliminar(${index})">Eliminar</button>
+
 </div>
 
 `
@@ -389,20 +419,38 @@ lista.appendChild(div)
 
 })
 
-document.getElementById("total").textContent=total
+document.getElementById("total").textContent = total
+
+}
+
+function eliminar(index){
+
+carrito.splice(index,1)
+
+actualizar()
 
 }
 
 function enviar(){
 
+if(carrito.length===0){
+
+alert("El carrito está vacío")
+
+return
+
+}
+
 let nombre=document.getElementById("nombre").value
 let direccion=document.getElementById("direccion").value
+
+let total=document.getElementById("total").textContent
 
 let mensaje="Pedido de uniformes:%0A"
 
 carrito.forEach(p=>{
 
-mensaje+=p.nombre+" Talla:"+p.talla+" $"+p.precio+"%0A"
+mensaje+=p.nombre+" Talla:"+p.talla+" Cant:"+p.cantidad+" $"+(p.precio*p.cantidad)+"%0A"
 
 })
 
