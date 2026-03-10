@@ -1,11 +1,11 @@
 let carrito=[]
-let total=0
+let subtotal=0
 
 function agregar(nombre,precio){
 
 carrito.push({nombre,precio})
 
-total+=precio
+subtotal+=precio
 
 actualizar()
 
@@ -27,17 +27,25 @@ lista.appendChild(li)
 
 })
 
-document.getElementById("total").textContent=total
+document.getElementById("contador").textContent=carrito.length
+
+document.getElementById("subtotal").textContent=subtotal
+
+let envio=subtotal>1000?0:120
+
+document.getElementById("envio").textContent=envio
+
+document.getElementById("total").textContent=subtotal+envio
 
 }
 
-function comprar(){
+function pagar(){
 
 let nombre=document.getElementById("nombre").value
 
-let telefono=document.getElementById("telefono").value
-
 let direccion=document.getElementById("direccion").value
+
+let total=document.getElementById("total").textContent
 
 let mensaje="Pedido:%0A"
 
@@ -47,16 +55,26 @@ mensaje+=p.nombre+" $"+p.precio+"%0A"
 
 })
 
-mensaje+="Total: $"+total+"%0A"
+mensaje+="Total $"+total+"%0A"
 
-mensaje+="Nombre: "+nombre+"%0A"
-
-mensaje+="Teléfono: "+telefono+"%0A"
+mensaje+="Cliente: "+nombre+"%0A"
 
 mensaje+="Dirección: "+direccion
 
 let numero="5210000000000"
 
 window.open("https://wa.me/"+numero+"?text="+mensaje)
+
+}
+
+function agregarReseña(){
+
+let texto=document.getElementById("comentario").value
+
+let div=document.createElement("p")
+
+div.textContent="⭐ "+texto
+
+document.getElementById("listaReseñas").appendChild(div)
 
 }
