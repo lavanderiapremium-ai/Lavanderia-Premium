@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,43 +10,89 @@
 
 <style>
 
+/* ESTILO GENERAL */
+
 body{
 font-family:Arial;
 margin:0;
 background:#f2f6ff;
 }
 
-/* HEADER */
+/* MENU PROFESIONAL */
 
-header{
+nav{
+
 background:linear-gradient(90deg,#2b7cff,#00c6ff);
+padding:15px;
 color:white;
-padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+position:sticky;
+top:0;
+z-index:10;
+
 }
 
-header h1{
+nav h2{
+
 margin:0;
+
+}
+
+nav ul{
+
+list-style:none;
+display:flex;
+gap:20px;
+margin:0;
+
+}
+
+nav a{
+
+color:white;
+text-decoration:none;
+font-weight:bold;
+
 }
 
 /* CATALOGO */
 
 .catalogo{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 padding:20px;
+
 }
+
+/* PRODUCTO */
 
 .producto{
 
 background:white;
 border-radius:12px;
 padding:15px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 text-align:center;
+
+animation:aparecer .6s ease;
+
+}
+
+@keyframes aparecer{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
 
 }
 
@@ -53,6 +100,15 @@ text-align:center;
 
 width:100%;
 border-radius:10px;
+transition:transform .3s;
+
+}
+
+/* ZOOM FOTO */
+
+.producto img:hover{
+
+transform:scale(1.2);
 
 }
 
@@ -95,7 +151,7 @@ top:0;
 width:320px;
 height:100%;
 background:white;
-box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
 padding:20px;
 overflow:auto;
 
@@ -142,17 +198,38 @@ background:#25D366;
 
 }
 
+footer{
+
+text-align:center;
+padding:20px;
+color:#777;
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<header>
+<!-- MENU -->
 
-<h1>🩺 Uniformes Quirúrgicos</h1>
+<nav>
 
-</header>
+<h2>🩺 Uniformes</h2>
+
+<ul>
+
+<li><a href="#">Inicio</a></li>
+<li><a href="#">Catálogo</a></li>
+<li><a href="#">Reseñas</a></li>
+<li><a href="#">Contacto</a></li>
+
+</ul>
+
+</nav>
+
+<!-- CATALOGO -->
 
 <section class="catalogo">
 
@@ -200,9 +277,9 @@ background:#25D366;
 
 <div class="producto">
 
-<img src="img/estampado.jpg">
+<img src="img/azul.jpg">
 
-<h3>Uniforme Estampado</h3>
+<h3>Uniforme Azul</h3>
 
 <p class="precio">$400</p>
 
@@ -215,15 +292,15 @@ background:#25D366;
 
 </select>
 
-<button onclick="agregar('Uniforme Estampado',400,'img/estampado.jpg','talla3')">Agregar</button>
+<button onclick="agregar('Uniforme Azul',400,'img/azul.jpg','talla3')">Agregar</button>
 
 </div>
 
 <div class="producto">
 
-<img src="img/azul.jpg">
+<img src="img/rojo.jpg">
 
-<h3>Uniforme Azul</h3>
+<h3>Uniforme Rojo</h3>
 
 <p class="precio">$400</p>
 
@@ -236,28 +313,7 @@ background:#25D366;
 
 </select>
 
-<button onclick="agregar('Uniforme Azul',400,'img/azul.jpg','talla4')">Agregar</button>
-
-</div>
-
-<div class="producto">
-
-<img src="img/rojo.jpg">
-
-<h3>Uniforme Rojo</h3>
-
-<p class="precio">$400</p>
-
-<select id="talla5">
-
-<option>CH</option>
-<option>M</option>
-<option>G</option>
-<option>XL</option>
-
-</select>
-
-<button onclick="agregar('Uniforme Rojo',400,'img/rojo.jpg','talla5')">Agregar</button>
+<button onclick="agregar('Uniforme Rojo',400,'img/rojo.jpg','talla4')">Agregar</button>
 
 </div>
 
@@ -282,6 +338,12 @@ background:#25D366;
 <button class="whatsapp" onclick="enviar()">Enviar pedido</button>
 
 </div>
+
+<footer>
+
+© Uniformes Quirúrgicos
+
+</footer>
 
 <script>
 
